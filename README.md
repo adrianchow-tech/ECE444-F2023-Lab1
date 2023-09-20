@@ -11,7 +11,8 @@ Activity 2:
 
 Activity 3: 
 
-![image](https://github.com/adrianchow-tech/ECE444-F2023-Lab1/assets/81934116/f645f951-797a-40e3-972a-799bb25838c1)
+![image](https://github.com/adrianchow-tech/ECE444-F2023-Lab1/assets/81934116/f9fe3534-857d-4c84-8f59-4ad47ca6d757)
+
 
 ![image](https://github.com/adrianchow-tech/ECE444-F2023-Lab1/assets/81934116/d9ccd444-c9fc-4f58-97a2-c0c92f8cc237)
 

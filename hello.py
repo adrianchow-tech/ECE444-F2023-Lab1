@@ -4,7 +4,7 @@ from flask_moment       import Moment
 from datetime           import datetime
 from flask_wtf          import FlaskForm
 from wtforms            import StringField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, ValidationError
 
 #Setup
 app = Flask(__name__)
@@ -13,22 +13,46 @@ app.config['SECRET_KEY'] = "something"
 bootstrap = Bootstrap(app)
 moment = Moment(app)
 
-#Class and Helper functions
+#Classes and Helper functions
+class validateEmail(object):
+    def __call__(self, form, field):
+        email = field.data
+        if '@' not in email:
+
+            raise ValidationError("Please include an '@' in the email address. '" + str(email) + "' is missing an '@'")
+        elif '@' in email and "utoronto" not in email:
+
+            raise ValidationError("Please include a valid UofT email address. '" + str(email) + "' is not a UofT email address.")
+        
 class NameForm(FlaskForm):
-    name = StringField( 'What is your name?', validators = [DataRequired()] )
-    submit = SubmitField('Submit')
+    name    = StringField( 'What is your name?', validators = [DataRequired()] )
+    email   = StringField( 'What if your UofT Email Address?', validators = [DataRequired(), validateEmail()] )
+    submit  = SubmitField( 'Submit' )
 
 #Flask app
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = NameForm()
+
     if form.validate_on_submit():
-        old_name = session.get('name')
+
+        old_name    = session.get('name')
+        old_email   = session.get('email')
+
         if old_name is not None and old_name != form.name.data:
+
             flash('Looks like you have changed your name!')
-        session['name'] = form.name.data
+
+        if old_email is not None and old_email != form.email.data:
+
+            flash('Looks like you have changed your email!')
+
+        session['name']     = form.name.data
+        session['email']    = form.email.data
+
         return redirect( url_for('index') )
-    return render_template( 'index.html', form=form, name=session.get('name') )
+    
+    return render_template( 'index.html', form=form, name=session.get('name'), email=session.get('email') )
 
 @app.route('/user/<name>')
 def user(name):

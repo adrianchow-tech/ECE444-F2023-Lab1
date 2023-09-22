@@ -13,8 +13,6 @@ Activity 3:
 
 ![image](https://github.com/adrianchow-tech/ECE444-F2023-Lab1/assets/81934116/f9fe3534-857d-4c84-8f59-4ad47ca6d757)
 
-<<<<<<< HEAD
-=======
 Activity 4:
 
 ![image](https://github.com/adrianchow-tech/ECE444-F2023-Lab1/assets/81934116/eaabf81b-b41d-4ffb-8542-67c922f99a42)
@@ -36,5 +34,3 @@ Email Change:
 Name and Email Change:
 
 ![image](https://github.com/adrianchow-tech/ECE444-F2023-Lab1/assets/81934116/ce95b957-5830-48ec-86ed-b8775e3e6d98)
-
->>>>>>> d5dbd13dff0fd949a7948b42386869b2c3a35a21
